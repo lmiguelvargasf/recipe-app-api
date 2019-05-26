@@ -12,7 +12,7 @@ class CommandTests(TestCase):
             gi.return_value = True
             call_command("wait_for_db")
 
-            self.assertEquals(gi.call_count, 1)
+            self.assertEqual(gi.call_count, 1)
 
     @patch("time.sleep", return_value=True)
     def test_wait_for_db_(self, ts):
@@ -21,4 +21,4 @@ class CommandTests(TestCase):
             gi.side_effect = [OperationalError] * 5 + [True]
             call_command("wait_for_db")
 
-            self.assertEquals(gi.call_count, 6)
+            self.assertEqual(gi.call_count, 6)
